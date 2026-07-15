@@ -469,7 +469,8 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 
 ### 🎓 Data Engineering Hackathon — Batch 03
 
-**Author:** Qasim Hassan &nbsp;·&nbsp; **Type:** On-Premise IoT → AWS Cloud Migration
+**Author:** Qasim Hassan &nbsp;·&nbsp; **Made By:** Sameer Hussain **Type:** On-Premise IoT → AWS Cloud Migration
+
 
 <sub>Built end-to-end: simulated sensor → live CDC → warehouse → dashboard 🚀</sub>
 
