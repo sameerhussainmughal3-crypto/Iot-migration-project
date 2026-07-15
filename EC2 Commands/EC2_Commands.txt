@@ -1,0 +1,31 @@
+----kafka topic-------
+# Producer test
+bin/kafka-console-producer.sh --topic iot-events --bootstrap-server <same-brokers> --producer.config client-scram.properties
+
+# dusri terminal mein consumer
+bin/kafka-console-consumer.sh --topic iot-events --bootstrap-server <same-brokers> --consumer.config client-scram.properties --from-beginning
+---postgres commands----
+--sudo dnf install -y postgresql15 postgresql15-server
+--sudo postgresql-setup --initdb
+--sudo systemctl enable postgresql
+--sudo systemctl start postgresql
+--wal_level = logical--
+--sudo -u postgres psql
+--sudo nano /var/lib/pgsql/data/postgresql.conf
+--sudo nano /var/lib/pgsql/data/pg_hba.conf
+--host    all    all    0.0.0.0/0    md5
+--sudo -u postgres psql -c "SHOW wal_level;"
+
+------kafka consumer--------
+bin/kafka-console-consumer.sh --topic iot-events --bootstrap-server boot-i1n.iotclusterpro.16w0x0.c24.kafka.us-east-1.amazonaws.com:9096,boot-z2e.iotclusterpro.16w0x0.c24.kafka.us-east-1.amazonaws.com:9096,boot-lhe.iotclusterpro.16w0x0.c24.kafka.us-east-1.amazonaws.com:9096 --consumer.config client-scram.properties --from-beginning
+
+
+-----JDBK Sink Kafka------wget https://hub--- downloads.confluent.io/api/plugins/confluentinc/kafka-connect-jdbc/versions/10.7.4/confluentinc-kafka-connect-jdbc-10.7.4.zip
+--unzip confluentinc-kafka-connect-jdbc-10.7.4.zip
+--sudo dnf install -y unzip
+--nohup bin/connect-standalone.sh connect-standalone.properties sink-postgres.properties > connect.log 2>&1 &
+--tail -30 connect.log
+--sleep 15 && tail -40 connect.log
+--pkill -9 -f connect-standalone
+sleep 3
+ps aux | grep connect-standalone
